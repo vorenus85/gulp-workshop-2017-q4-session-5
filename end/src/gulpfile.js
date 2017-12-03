@@ -6,6 +6,10 @@ var concat = require('gulp-concat');
 var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
 var browserSync = require('browser-sync').create();
+var imagemin = require('gulp-imagemin');
+var imageminPngquant = require('imagemin-pngquant');
+var imageminJpegRecompress = require('imagemin-jpeg-recompress');
+
 
 // static css variables
 var srcScss = 'scss/style.scss';
@@ -26,6 +30,10 @@ var minMainJs = 'main.min.js';
 var distVendorJs = '../web/js/vendor';
 var vendorJs = 'js/vendor/plugins/*.js';
 var vendorPackJsMin = 'vendor.packs.min.js';
+
+// static image variables
+var srcImg = 'images/**/*.{png,jpeg,jpg,svg,gif}';
+var distImg = '../web/images';
 
 // Styles
 gulp.task('sass', function(){
@@ -88,6 +96,22 @@ gulp.task('vendor-js', function(){
    .pipe(gulp.dest(distVendorJs));
 });
 // /Scripts
+
+/* images */
+gulp.task('images', function(){
+    return gulp.src(srcImg)
+    .pipe(imagemin(
+        [
+            imagemin.gifsicle(),
+            imagemin.jpegtran(),
+            imagemin.optipng(),
+            imagemin.svgo(),
+            imageminPngquant(),
+            imageminJpegRecompress()
+        ]
+    ))
+    .pipe(gulp.dest(distImg))
+});
 
 // browserSync
 gulp.task('browserSync', function() {
