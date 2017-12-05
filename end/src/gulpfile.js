@@ -9,6 +9,7 @@ var browserSync = require('browser-sync').create();
 var imagemin = require('gulp-imagemin');
 var imageminPngquant = require('imagemin-pngquant');
 var imageminJpegRecompress = require('imagemin-jpeg-recompress');
+var cache = require('gulp-cache');
 
 
 // static css variables
@@ -100,7 +101,7 @@ gulp.task('vendor-js', function(){
 /* images */
 gulp.task('images', function(){
     return gulp.src(srcImg)
-    .pipe(imagemin(
+    .pipe(cache(imagemin(
         [
             imagemin.gifsicle(),
             imagemin.jpegtran(),
@@ -109,7 +110,7 @@ gulp.task('images', function(){
             imageminPngquant(),
             imageminJpegRecompress()
         ]
-    ))
+    )))
     .pipe(gulp.dest(distImg))
 });
 
