@@ -38,18 +38,16 @@ Run task
 gulp images
 ```
 
-## 5. Start gulp default task
-Run default task
-```$xslt
-gulp
+```
+gulp-imagemin: Minified 0 images
 ```
 
-## 6. Rename the image path in index.html
+## 5. Rename the image path in index.html
 ```
 from :src/images/  to: web/images/
 ```
 
-## 7. Extend our images task
+## 6. Extend our images task
 ```
 imagemin.gifsicle(),
 imagemin.jpegtran(),
@@ -59,14 +57,14 @@ imageminPngquant(),
 imageminJpegRecompress()
 ```
 
-## 8. Run again your images task
+## 7. Run again your images task
 
 the result will be:
 ```
 gulp-imagemin: Minified 21 images (saved 569.81 kB - 39.3%)
 ```
 
-## 9. Extend images task
+## 8. Extend images task
 
 ```$xslt
 .pipe(cache(imagemin(
@@ -81,7 +79,7 @@ gulp-imagemin: Minified 21 images (saved 569.81 kB - 39.3%)
 )))
 ```
 
-## 10. Run again your images task
+## 9. Run again your images task
 
 the result will be:
 ```
