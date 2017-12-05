@@ -15,7 +15,7 @@ Install the 3 imagemin packages
 npm install --save-dev gulp-imagemin@3.0.1 imagemin-pngquant@5.0.0 imagemin-jpeg-recompress@5.0.0 gulp-cache
 ```
 
-## Declare static variables
+## 3. Declare static variables
 
 Write code to gulpfile.js
 ```
